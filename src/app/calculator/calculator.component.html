@@ -1,11 +1,42 @@
 <div class="center">
-    <table class="table table-borderless table-hover">
-        <tbody>
-            <tr>
-                <td>Permissions (in Octal)</td>
-                <td><input type="text" [(ngModel)]="permissionOctal"></td>
-                <td>{{ permissionSymbols }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="calculator card">
+        
+        <div>
+            <input type="text" [(ngModel)]="permissionOctal">
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th scope="col">Owner</th>
+                        <th scope="col">Group</th>
+                        <th scope="col">Other</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="col">Read</th>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Write</th>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Execute</th>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                        <td><button type="button" class="btn btn-primary"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
 </div>
