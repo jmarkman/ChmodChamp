@@ -1,8 +1,9 @@
 <table class="table table-borderless">
     <tbody>
-        <tr>Permissions (in Octal)</tr>
         <tr>
-            <input type="text">
+            <td>Permissions (in Octal)</td>
+            <td><input type="text" [(ngModel)]="permissionOctal"></td>
+            <td>{{ permissionSymbols }}</td>
         </tr>
     </tbody>
 </table>
