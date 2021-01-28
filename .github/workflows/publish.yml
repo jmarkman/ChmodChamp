@@ -1,0 +1,24 @@
+name: Publish Chmod Page
+
+on:
+  repository_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Project
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm
+    - run: npm run build
+    - name: Deploy Project
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
