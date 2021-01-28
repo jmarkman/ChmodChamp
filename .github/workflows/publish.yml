@@ -17,10 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build Project - Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm run build --if-present
+      run: |
+        npm install
+        npm run build
     - name: Deploy Project
       uses: peaceiris/actions-gh-pages@v3
       with:
