@@ -1,42 +1,9 @@
 <div class="center">
     <div class="calculator card">
         
-        <div>
-            <input type="text" [(ngModel)]="permissionOctal">
-        </div>
+        <chm-permissioninput></chm-permissioninput>
 
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th scope="col">Owner</th>
-                        <th scope="col">Group</th>
-                        <th scope="col">Other</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="col">Read</th>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Write</th>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Execute</th>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                        <td><button type="button" class="btn btn-primary"></button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <chm-permissiontable></chm-permissiontable>
         
     </div>
 </div>
