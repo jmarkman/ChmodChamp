@@ -14,4 +14,8 @@ export class ChmodPermissionDataService {
   changePermission(permissionValue: string) {
     this.permissionSource.next(permissionValue);
   }
+
+  getCurrentPermission(): string {
+    return this.permissionSource.getValue();
+  }
 }

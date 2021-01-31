@@ -24,7 +24,7 @@ export class PermissionInputComponent implements OnInit {
   };
 
   get permissionOctal(): string {
-    return this._permissionOctal;
+    return this.permissionData.getCurrentPermission();
   }
 
   get permissionSymbols(): string {
@@ -33,7 +33,6 @@ export class PermissionInputComponent implements OnInit {
 
   @Input()
   set permissionOctal(permOct: string) {
-    this._permissionOctal = permOct;
     this.updatePermissionSymbols(permOct);
   }
 
@@ -44,7 +43,7 @@ export class PermissionInputComponent implements OnInit {
   constructor(private permissionData: ChmodPermissionDataService) { }
 
   ngOnInit(): void {
-    this._permissionDataSubscription = this.permissionData.currentPermission$.subscribe(p => this.permissionOctal = p);
+    this._permissionDataSubscription = this.permissionData.currentPermission$.subscribe(p => this._permissionOctal = p);
   }
 
   private updatePermissionSymbols(permOct: string) {
@@ -52,11 +51,12 @@ export class PermissionInputComponent implements OnInit {
 
     if (permOct.length === 0) {
       this.permissionSymbols = `-${this.symbols[0]}${this.symbols[0]}${this.symbols[0]}`
+      this.permissionData.changePermission(permOct);
       return;
     }
     
     for (let index = 0; index < 3; index++) {
-      let currentNumber = parseInt(this._permissionOctal.charAt(index));
+      let currentNumber = parseInt(permOct.charAt(index));
       if (!isNaN(currentNumber)) {
         octals.push(currentNumber);
       } else {
@@ -65,6 +65,8 @@ export class PermissionInputComponent implements OnInit {
     }
 
     this.permissionSymbols = `-${this.symbols[octals[0]]}${this.symbols[octals[1]]}${this.symbols[octals[2]]}`;
+
+    this.permissionData.changePermission(permOct);
   }
 
 }

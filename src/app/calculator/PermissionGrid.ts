@@ -41,4 +41,66 @@ export default class PermissionGrid {
 
         return resultOctal;
     }
+
+    updateUsingPermissionOctal(permOctal: string): void {
+        let splitOctal: string[];
+        
+        if (permOctal.length === 2) {
+            splitOctal = [permOctal[0], permOctal[1], "0"];
+        } else if (permOctal.length === 1) {
+            splitOctal = [permOctal, "0", "0"];
+        } else if (permOctal.length === 0) {
+            splitOctal = ["0", "0", "0"];
+        } else {
+            splitOctal = permOctal.split('');
+        }
+        
+        let ownerProps: string[] = Object.getOwnPropertyNames(this).filter(p => p.includes("owner"));
+        let groupProps: string[] = Object.getOwnPropertyNames(this).filter(p => p.includes("group"));
+        let otherProps: string[] = Object.getOwnPropertyNames(this).filter(p => p.includes("other"));
+
+        let propsArr: string[][] = [ownerProps, groupProps, otherProps];
+
+        for (let i = 0; i < splitOctal.length; i++) {
+            let octalSentinel: number = 7;
+            let read: number = 0;
+            let write: number = 1;
+            let execute: number = 2;
+            octalSentinel -= parseInt(splitOctal[i]);
+
+            if (octalSentinel === 0) {
+                this[propsArr[i][read]] = true;
+                this[propsArr[i][write]] = true;
+                this[propsArr[i][execute]] = true;
+            } else if (octalSentinel === 1) {
+                this[propsArr[i][read]] = true;
+                this[propsArr[i][write]] = true; 
+                this[propsArr[i][execute]] = false;               
+            } else if (octalSentinel === 2) {
+                this[propsArr[i][read]] = true;
+                this[propsArr[i][write]] = false;
+                this[propsArr[i][execute]] = true;
+            } else if (octalSentinel === 3) {
+                this[propsArr[i][read]] = true;
+                this[propsArr[i][write]] = false;
+                this[propsArr[i][execute]] = false;
+            } else if (octalSentinel === 4) {
+                this[propsArr[i][read]] = false;
+                this[propsArr[i][write]] = true;
+                this[propsArr[i][execute]] = true;                
+            } else if (octalSentinel === 5) {
+                this[propsArr[i][read]] = false;
+                this[propsArr[i][write]] = true;
+                this[propsArr[i][execute]] = false;
+            } else if (octalSentinel === 6) {
+                this[propsArr[i][read]] = false;
+                this[propsArr[i][write]] = false;
+                this[propsArr[i][execute]] = true;
+            } else {
+                this[propsArr[i][read]] = false;
+                this[propsArr[i][write]] = false;
+                this[propsArr[i][execute]] = false;
+            }
+        }
+    }
 }

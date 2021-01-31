@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import PermissionGrid from './PermissionGrid';
 import { ChmodPermissionDataService } from './service/chmodpermissiondata.service';
@@ -10,28 +10,26 @@ import { ChmodPermissionDataService } from './service/chmodpermissiondata.servic
 })
 export class PermissionTableComponent implements OnInit {
 
-  permissionGrid: PermissionGrid;
+  permissionGrid: PermissionGrid = new PermissionGrid({
+    ownerRead: true,
+    ownerWrite: true,
+    ownerExecute: true,
+    groupRead: true,
+    groupWrite: false,
+    groupExecute: true,
+    otherRead: false,
+    otherWrite: false,
+    otherExecute: true
+  });
   permissionOctal: string;
   permissionDataSubscription: Subscription;
 
   constructor(private permissionData: ChmodPermissionDataService) {
 
-    this.permissionDataSubscription = this.permissionData.currentPermission$.subscribe(p => this.permissionOctal = p);
-
-    this.permissionGrid = new PermissionGrid({
-      ownerRead: true,
-      ownerWrite: true,
-      ownerExecute: true,
-      groupRead: true,
-      groupWrite: false,
-      groupExecute: true,
-      otherRead: false,
-      otherWrite: false,
-      otherExecute: true
-    });
   }
 
   ngOnInit(): void {
+    this.permissionDataSubscription = this.permissionData.currentPermission$.subscribe(p => this.permissionGrid.updateUsingPermissionOctal(p));
   }
 
   onPermTableClick(permissionButton: string) {
