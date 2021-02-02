@@ -1,5 +1,5 @@
 <div>
-    <table class="table">
+    <table id="permissionToggleTable" class="table">
         <thead>
             <tr>
                 <th></th>
@@ -11,21 +11,21 @@
         <tbody>
             <tr>
                 <th scope="col">Read</th>
-                <td><button type="button" [ngClass]="permissionGrid.ownerRead ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('ownerRead')"></button></td>
-                <td><button type="button" [ngClass]="permissionGrid.groupRead ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('groupRead')"></button></td>
-                <td><button type="button" [ngClass]="permissionGrid.otherRead ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('otherRead')"></button></td>
+                <td><button type="button" id="ownerReadBtn" [ngClass]="permissionGrid.ownerRead ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('ownerRead')"></button></td>
+                <td><button type="button" id="groupReadBtn" [ngClass]="permissionGrid.groupRead ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('groupRead')"></button></td>
+                <td><button type="button" id="otherReadBtn" [ngClass]="permissionGrid.otherRead ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('otherRead')"></button></td>
             </tr>
             <tr>
                 <th scope="col">Write</th>
-                <td><button type="button" [ngClass]="permissionGrid.ownerWrite ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('ownerWrite')"></button></td>
-                <td><button type="button" [ngClass]="permissionGrid.groupWrite ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('groupWrite')"></button></td>
-                <td><button type="button" [ngClass]="permissionGrid.otherWrite ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('otherWrite')"></button></td>
+                <td><button type="button" id="ownerWriteBtn" [ngClass]="permissionGrid.ownerWrite ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('ownerWrite')"></button></td>
+                <td><button type="button" id="groupWriteBtn" [ngClass]="permissionGrid.groupWrite ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('groupWrite')"></button></td>
+                <td><button type="button" id="otherWriteBtn" [ngClass]="permissionGrid.otherWrite ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('otherWrite')"></button></td>
             </tr>
             <tr>
                 <th scope="col">Execute</th>
-                <td><button type="button" [ngClass]="permissionGrid.ownerExecute ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('ownerExecute')"></button></td>
-                <td><button type="button" [ngClass]="permissionGrid.groupExecute ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('groupExecute')"></button></td>
-                <td><button type="button" [ngClass]="permissionGrid.otherExecute ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('otherExecute')"></button></td>
+                <td><button type="button" id="ownerExecuteBtn" [ngClass]="permissionGrid.ownerExecute ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('ownerExecute')"></button></td>
+                <td><button type="button" id="groupExecuteBtn" [ngClass]="permissionGrid.groupExecute ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('groupExecute')"></button></td>
+                <td><button type="button" id="otherExecuteBtn" [ngClass]="permissionGrid.otherExecute ? 'btn btn-primary' : 'btn btn-light'" (click)="onPermTableClick('otherExecute')"></button></td>
             </tr>
         </tbody>
     </table>

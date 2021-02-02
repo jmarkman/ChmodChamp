@@ -1,0 +1,6 @@
+{
+    "siteTitle": "ChmodChamp",
+    "permissionOctal": "751",
+    "permissionSymbols": "-rwxr-x--x",
+    "chmod777": "777"
+}

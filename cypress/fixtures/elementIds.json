@@ -1,0 +1,4 @@
+{
+    "buttons": ["ownerReadBtn", "ownerWriteBtn", "ownerExecuteBtn", "groupReadBtn", "groupWriteBtn", "groupExecuteBtn", "otherReadBtn", "otherWriteBtn", "otherExecuteBtn"],
+
+}
